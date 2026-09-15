@@ -1,3 +1,10 @@
+<?php
+// Session එක start වී නැත්නම් පමණක් start කිරීම
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,19 +18,26 @@
   <header>
     <div class="container nav-container">
       <a href="#" class="logo">
-        <!-- Photo එක මෙතනට එකතු කරන්න -->
         <img src="logo.png" alt="BookItYourself Logo" class="logo-img">
         BookItYourself
       </a>
       <nav>
         <ul>
-          <li><a href="#" class="active">Home</a></li>
+          <li><a href="homehtml.php" class="active">Home</a></li>
           <li><a href="#">Hotels</a></li>
           <li><a href="#">Villas</a></li>
           <li><a href="#">Deals</a></li>
           <li><a href="#">About</a></li>
         </ul>
       </nav>
+
+      <a href="cart.php" class="cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count">
+          <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>
+        </span>
+      </a>
+      
       <button class="btn-auth">Sign In / Register</button>
     </div>
   </header>

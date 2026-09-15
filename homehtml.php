@@ -18,19 +18,46 @@
       <form class="search-card" onsubmit="event.preventDefault();">
         <div class="search-field">
           <label for="destination">Destination</label>
-          <input type="text" id="destination" placeholder="Where are you going?">
+          <input type="text" id="destination" list="districts-list" placeholder="Where are you going?">
+          <datalist id="districts-list">
+            <option value="Colombo">
+            <option value="Gampaha">
+            <option value="Kalutara">
+            <option value="Galle">
+            <option value="Matara">
+            <option value="Hambantota">
+            <option value="Kandy">
+            <option value="Nuwara Eliya">
+            <option value="Badulla">
+            <option value="Monaragala">
+            <option value="Ratnapura">
+            <option value="Kegalle">
+            <option value="Matale">
+            <option value="Anuradhapura">
+            <option value="Polonnaruwa">
+            <option value="Kurunegala">
+            <option value="Puttalam">
+            <option value="Trincomalee">
+            <option value="Batticaloa">
+            <option value="Ampara">
+            <option value="Jaffna">
+            <option value="Mannar">
+            <option value="Kilinochchi">
+            <option value="Vavuniya">
+            <option value="Mullaitivu">
+          </datalist>
         </div>
         <div class="search-field">
           <label for="check-in">Check-in</label>
-          <input type="text" id="check-in" placeholder="Add date">
+          <input type="date" id="check-in">
         </div>
         <div class="search-field">
           <label for="check-out">Check-out</label>
-          <input type="text" id="check-out" placeholder="Add date">
+          <input type="date" id="check-out">
         </div>
         <div class="search-field">
           <label for="guests">Guests</label>
-          <input type="text" id="guests" placeholder="Add guests">
+          <input type="number" id="guests" min="1" placeholder="1">
         </div>
         <button type="submit" class="btn-search">Search</button>
       </form>
@@ -40,11 +67,11 @@
       <h2 class="section-title">Popular stays</h2>
       <div class="grid-3">
 
-        <a href="#" class="stay-card">
+        <a href="samplestay.php" class="stay-card">
           <img src="beach villa.jpg" alt="Beach Villa" class="stay-image">
-          <h3>Beach Villa</h3>
+          <h3>Bentota Luxury Escape</h3>
           <div class="stay-meta">
-            <span class="stay-details"><span class="rating">★★★★★ 4.8</span> • Colombo</span>
+            <span class="stay-details"><span class="rating">★★★★★ 4.8</span> • Bentota</span>
             <span class="price">From LKR 12,500</span>
           </div>
         </a>
@@ -88,11 +115,19 @@
     </section>
   </main>
 
+  <div id="footer-placeholder"></div>
+
 <script>
   fetch('header.php')
     .then(response => response.text())
     .then(data => {
       document.getElementById('header-placeholder').innerHTML = data;
+    });
+
+  fetch('footer.php')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
     });
 </script>
 
