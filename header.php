@@ -38,7 +38,7 @@ if (session_status() === PHP_SESSION_NONE) {
         </span>
       </a>
       
-      <button class="btn-auth">Sign In / Register</button>
+      <a href="login.php" class="btn-auth">Sign In / Register</a>
     </div>
   </header>
 
