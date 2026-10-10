@@ -12,12 +12,13 @@ if (session_status() === PHP_SESSION_NONE) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Header of the Page</title>
   <link rel="stylesheet" href="homecss.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <header>
     <div class="container nav-container">
-      <a href="#" class="logo">
+      <a href="homehtml.php" class="logo">
         <img src="logo.png" alt="BookItYourself Logo" class="logo-img">
         BookItYourself
       </a>
@@ -26,18 +27,31 @@ if (session_status() === PHP_SESSION_NONE) {
           <li><a href="homehtml.php" class="active">Home</a></li>
           <li><a href="hotels.php" class="active">Hotels & Villas</a></li>
           <li><a href="#">Deals</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="about.php" class="active">About</a></li>
         </ul>
       </nav>
 
       <a href="cart.php" class="cart-icon">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-count">
-          <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?>
+          <?php 
+            // Database එකෙන් හෝ Session එකෙන් Cart count එක පෙන්වීම
+            echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; 
+          ?>
         </span>
       </a>
       
-      <a href="login.php" class="btn-auth">Sign In / Register</a>
+      <!-- User Login වී ඇත්දැයි පරීක්ෂා කර Header එක වෙනස් කිරීම -->
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <div class="user-menu" style="display: flex; align-items: center; gap: 10px;">
+          <a href="account.php" class="btn-auth" style="background-color: #007a78; color: white; text-decoration: none; padding: 8px 15px; border-radius: 6px; font-weight: 600;">
+            <i class="fa-solid fa-user"></i> <?php echo htmlspecialchars($_SESSION['username']); ?>
+          </a>
+        </div>
+      <?php else: ?>
+        <a href="login.php" class="btn-auth">Sign In / Register</a>
+      <?php endif; ?>
+
     </div>
   </header>
 

@@ -1,0 +1,335 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  min-height: 100vh;
+  padding: 30px 20px;
+}
+
+/* Form / Container Layout */
+.form-container {
+  max-width: 750px;
+  margin: 0 auto;
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #334155;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.form-container h2 {
+  margin-bottom: 24px;
+  font-size: 26px;
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.form-container h2 i {
+  color: #007a78;
+}
+
+/* Manage Containers (Wider Layouts) */
+.manage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #334155;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.manage-container h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.manage-container h2 i {
+  color: #007a78;
+}
+
+/* Top Bar inside Manage Pages */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Back Link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.input-group input, 
+.input-group textarea, 
+.input-group select {
+  width: 100%;
+  padding: 12px 16px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group textarea {
+  resize: vertical;
+  height: 120px;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  border-color: #007a78;
+  box-shadow: 0 0 0 3px rgba(0, 122, 120, 0.25);
+}
+
+/* File Input Customization */
+.input-group input[type="file"] {
+  padding: 10px;
+  background: #0f172a;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.btn-submit {
+  background: #007a78;
+  color: #ffffff;
+  border: none;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background: #005f5d;
+}
+
+/* Add Button */
+.btn-add {
+  background: #007a78;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.btn-add:hover {
+  background: #005f5d;
+}
+
+/* Admin Tables */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #0f172a;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.admin-table th, 
+.admin-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+  font-size: 14px;
+}
+
+.admin-table th {
+  background-color: #1e293b;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.admin-table tr:hover {
+  background-color: rgba(51, 65, 85, 0.3);
+}
+
+/* Table Thumbnails */
+.stay-thumb {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Action Buttons inside Tables */
+.action-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit {
+  background: #2563eb;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+
+.btn-edit:hover {
+  background: #1d4ed8;
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+}
+
+/* Alerts */
+.alert-success {
+  background-color: #10b981;
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alert-error {
+  background-color: #ef4444;
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-container, .manage-container {
+    padding: 20px;
+  }
+}
+
+/* Admin Navigation Styles */
+.admin-navbar {
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+  padding: 15px 30px;
+  margin-bottom: 30px;
+}
+.admin-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.admin-logo {
+  color: #007a78;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.admin-nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+}
+.admin-nav-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.admin-nav-links a:hover { color: #38bdf8; }
+.admin-nav-links .btn-logout {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+.admin-nav-links .btn-logout:hover { background: #ef4444; color: #fff; }
