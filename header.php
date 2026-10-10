@@ -24,8 +24,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <nav>
         <ul>
           <li><a href="homehtml.php" class="active">Home</a></li>
-          <li><a href="#">Hotels</a></li>
-          <li><a href="#">Villas</a></li>
+          <li><a href="hotels.php" class="active">Hotels & Villas</a></li>
           <li><a href="#">Deals</a></li>
           <li><a href="#">About</a></li>
         </ul>

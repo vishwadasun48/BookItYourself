@@ -1,3 +1,25 @@
+<?php
+// 1. Database Connection එක හදාගැනීම
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "bookityourself_db";
+
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    die("Database Connection Failed: " . $conn->connect_error);
+}
+
+// 2. Popular Stays (Rating එක වැඩිම Stays මුලින්ම එන සේ 6ක් ලබාගැනීම)
+$sql = "SELECT * FROM stays ORDER BY rating DESC LIMIT 6";
+$result = $conn->query($sql);
+
+// 3. Database එකේ stays තියෙන Unique Locations (Destination) ටික ලබාගැනීම
+$loc_sql = "SELECT DISTINCT location FROM stays ORDER BY location ASC";
+$loc_result = $conn->query($loc_sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,84 +37,57 @@
       <h1>Find your perfect stay</h1>
       <p>Hotels and villas for every trip, budget and occasion.</p>
 
-      <form class="search-card" onsubmit="event.preventDefault();">
+      <!-- Search Form (GET method එක හරහා searchresult.php වෙත යැවීම) -->
+      <form class="search-card" action="searchresult.php" method="GET">
         <div class="search-field">
           <label for="destination">Destination</label>
-          <input type="text" id="destination" list="districts-list" placeholder="Where are you going?">
+          <input type="text" id="destination" name="destination" list="districts-list" placeholder="Where are you going?" required>
           <datalist id="districts-list">
-            <option value="Colombo">
-            <option value="Gampaha">
-            <option value="Kalutara">
-            <option value="Galle">
-            <option value="Matara">
-            <option value="Hambantota">
-            <option value="Kandy">
-            <option value="Nuwara Eliya">
-            <option value="Badulla">
-            <option value="Monaragala">
-            <option value="Ratnapura">
-            <option value="Kegalle">
-            <option value="Matale">
-            <option value="Anuradhapura">
-            <option value="Polonnaruwa">
-            <option value="Kurunegala">
-            <option value="Puttalam">
-            <option value="Trincomalee">
-            <option value="Batticaloa">
-            <option value="Ampara">
-            <option value="Jaffna">
-            <option value="Mannar">
-            <option value="Kilinochchi">
-            <option value="Vavuniya">
-            <option value="Mullaitivu">
+            <?php if ($loc_result && $loc_result->num_rows > 0): ?>
+              <?php while($loc = $loc_result->fetch_assoc()): ?>
+                <option value="<?php echo htmlspecialchars($loc['location']); ?>">
+              <?php endwhile; ?>
+            <?php endif; ?>
           </datalist>
         </div>
         <div class="search-field">
           <label for="check-in">Check-in</label>
-          <input type="date" id="check-in">
+          <input type="date" id="check-in" name="check_in">
         </div>
         <div class="search-field">
           <label for="check-out">Check-out</label>
-          <input type="date" id="check-out">
+          <input type="date" id="check-out" name="check_out">
         </div>
         <div class="search-field">
           <label for="guests">Guests</label>
-          <input type="number" id="guests" min="1" placeholder="1">
+          <input type="number" id="guests" name="guests" min="1" placeholder="1">
         </div>
         <button type="submit" class="btn-search">Search</button>
       </form>
     </section>
 
+    <!-- Dynamic Popular Stays Section -->
     <section>
       <h2 class="section-title">Popular stays</h2>
       <div class="grid-3">
 
-        <a href="samplestay.php" class="stay-card">
-          <img src="beach villa.jpg" alt="Beach Villa" class="stay-image">
-          <h3>Bentota Luxury Escape</h3>
-          <div class="stay-meta">
-            <span class="stay-details"><span class="rating">★★★★★ 4.8</span> • Bentota</span>
-            <span class="price">From LKR 12,500</span>
-          </div>
-        </a>
+        <?php if ($result && $result->num_rows > 0): ?>
+          <?php while($stay = $result->fetch_assoc()): ?>
+            <a href="samplestay.php?id=<?php echo $stay['id']; ?>" class="stay-card">
+              <img src="Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="<?php echo htmlspecialchars($stay['title']); ?>" class="stay-image">
+              <h3><?php echo htmlspecialchars($stay['title']); ?></h3>
+              <div class="stay-meta">
+                <span class="stay-details">
+                  <span class="rating">★ <?php echo number_format($stay['rating'], 1); ?></span> • <?php echo htmlspecialchars($stay['location']); ?>
+                </span>
+                <span class="price">From LKR <?php echo number_format($stay['price_per_night']); ?></span>
+              </div>
+            </a>
+          <?php endwhile; ?>
+        <?php else: ?>
+          <p>No stays available right now.</p>
+        <?php endif; ?>
 
-        <a href="#" class="stay-card">
-          <img src="city hotel.jpg" alt="City Hotel" class="stay-image">
-          <h3>City Hotel</h3>
-          <div class="stay-meta">
-            <span class="stay-details"><span class="rating">★★★★★ 4.8</span> • Colombo</span>
-            <span class="price">From LKR 12,500</span>
-          </div>
-        </a>
-
-        <a href="#" class="stay-card">
-          <img src="mountain villa.jpg" alt="Mountain Villa" class="stay-image">
-          <h3>Mountain Villa</h3>
-          <div class="stay-meta">
-            <span class="stay-details"><span class="rating">★★★★★ 4.8</span> • Colombo</span>
-            <span class="price">From LKR 12,500</span>
-          </div>
-        </a>
       </div>
     </section>
 
