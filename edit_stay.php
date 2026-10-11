@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $room_type   = trim($_POST['room_type']);
     $map_url     = trim($_POST['map_url']);
     $selected_facilities = isset($_POST['facilities']) ? $_POST['facilities'] : [];
+    $delete_images       = isset($_POST['delete_images']) ? $_POST['delete_images'] : [];
 
     $upload_dir = "Images/Stays/";
     if (!is_dir($upload_dir)) {
@@ -56,6 +57,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("sssdssi", $title, $location, $description, $price, $room_type, $map_url, $stay_id);
         $stmt->execute();
         $stmt->close();
+    }
+
+    // Delete selected sample images
+    if (!empty($delete_images)) {
+        foreach ($delete_images as $img_id) {
+            $img_id = (int)$img_id;
+            // Fetch image path to delete file from folder
+            $q = $conn->prepare("SELECT image_path FROM stay_images WHERE id = ? AND stay_id = ?");
+            $q->bind_param("ii", $img_id, $stay_id);
+            $q->execute();
+            $res = $q->get_result();
+            if ($img_row = $res->fetch_assoc()) {
+                $file_path = $upload_dir . $img_row['image_path'];
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
+            $q->close();
+
+            // Delete from database
+            $del_stmt = $conn->prepare("DELETE FROM stay_images WHERE id = ? AND stay_id = ?");
+            $del_stmt->bind_param("ii", $img_id, $stay_id);
+            $del_stmt->execute();
+            $del_stmt->close();
+        }
     }
 
     // Update Facilities: Delete old associations and insert newly checked ones
@@ -128,8 +154,10 @@ while($row = $cf_result->fetch_assoc()) {
   <link rel="stylesheet" href="admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .sample-img-preview { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
-    .sample-img-preview img { width: 80px; height: 60px; object-fit: cover; border-radius: 6px; border: 1px solid #334155; }
+    .sample-img-preview { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .img-card { background: #0f172a; padding: 8px; border-radius: 8px; border: 1px solid #334155; text-align: center; }
+    .img-card img { width: 80px; height: 60px; object-fit: cover; border-radius: 6px; display: block; margin-bottom: 6px; }
+    .img-card label { font-size: 12px; color: #ef4444; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; }
     .facilities-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; background: #0f172a; padding: 15px; border-radius: 8px; border: 1px solid #334155; }
     .facility-item { display: flex; align-items: center; gap: 8px; color: #f8fafc; font-size: 14px; cursor: pointer; }
   </style>
@@ -171,7 +199,7 @@ while($row = $cf_result->fetch_assoc()) {
         <input type="text" name="room_type" value="<?php echo htmlspecialchars($stay['room_type']); ?>" required>
       </div>
 
-      <!-- Facilities Checkboxes (With pre-checked values) -->
+      <!-- Facilities Checkboxes -->
       <div class="input-group">
         <label>Facilities Available</label>
         <div class="facilities-grid">
@@ -195,18 +223,24 @@ while($row = $cf_result->fetch_assoc()) {
         <input type="file" name="hero_image" accept="image/*">
       </div>
 
+      <!-- Sample Images with Delete Option -->
       <div class="input-group">
-        <label>Current Sample Images</label>
+        <label>Current Sample Images (Check to Delete)</label>
         <div class="sample-img-preview">
           <?php if ($sample_images_result && $sample_images_result->num_rows > 0): ?>
             <?php while($s_img = $sample_images_result->fetch_assoc()): ?>
-              <img src="Images/Stays/<?php echo htmlspecialchars($s_img['image_path']); ?>" alt="Sample Image">
+              <div class="img-card">
+                <img src="Images/Stays/<?php echo htmlspecialchars($s_img['image_path']); ?>" alt="Sample Image">
+                <label>
+                  <input type="checkbox" name="delete_images[]" value="<?php echo $s_img['id']; ?>"> Delete
+                </label>
+              </div>
             <?php endwhile; ?>
           <?php else: ?>
             <p style="color: #94a3b8; font-size: 13px;">Sample images කිසිවක් ඇතුළත් කර නැත.</p>
           <?php endif; ?>
         </div>
-        <label>Add More Sample Images (Optional)</label>
+        <label style="margin-top: 10px;">Add More Sample Images (Optional)</label>
         <input type="file" name="sample_images[]" accept="image/*" multiple>
       </div>
 
