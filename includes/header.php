@@ -26,7 +26,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <ul>
           <li><a href="/bookityourself/homehtml.php" class="active">Home</a></li>
           <li><a href="/bookityourself/pages/hotels.php" class="active">Hotels & Villas</a></li>
-          <li><a href="#">Deals</a></li>
+          <li><a href="/bookityourself/pages/deals.php" class="active">Deals</a></li>
           <li><a href="/bookityourself/pages/about.php" class="active">About</a></li>
         </ul>
       </nav>
