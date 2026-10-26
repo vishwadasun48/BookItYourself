@@ -1,0 +1,21 @@
+/* BookItYourself informational pages */
+:root{--teal:#007a78;--ink:#10253d;--muted:#60758c;--line:#e2ebeb;--pale:#e7f3f2}
+.info-wrap{max-width:1000px;margin:28px auto 70px;padding:0 20px;color:var(--ink);font-family:'Segoe UI',Arial,sans-serif}
+.info-hero{background:var(--pale);border-radius:12px;text-align:center;padding:48px 24px;margin-bottom:28px}
+.info-hero h1{font-size:clamp(28px,4vw,38px);margin:10px 0;color:var(--ink)}
+.info-hero p{color:var(--muted);line-height:1.7}
+.info-tag{font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--teal)}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.info-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;box-shadow:0 6px 18px rgba(14,50,65,.04)}
+.info-card h2{font-size:20px;margin:0 0 12px;color:var(--ink)}
+.info-card h3{font-size:17px;margin:14px 0 8px}
+.info-card p,.info-card li{font-size:15px;line-height:1.75;color:#42586c}
+.info-card p{margin:8px 0}.info-card ul{padding-left:20px}
+.info-card a{color:var(--teal);overflow-wrap:anywhere}
+.info-btn{display:inline-block;background:var(--teal);color:white!important;padding:11px 17px;border-radius:8px;text-decoration:none;font-weight:650;margin:8px 8px 4px 0}
+.info-btn.secondary{background:white;color:var(--teal)!important;border:1px solid var(--teal)}
+.info-note{background:#fff9e9;border-left:3px solid #d9a441;padding:12px 16px;border-radius:6px;margin:18px 0;color:#6b5424;font-size:14px}
+.info-section{margin-top:18px}.info-card details{padding:12px 0;border-bottom:1px solid var(--line)}.info-card summary{cursor:pointer;font-weight:650;color:var(--ink)}
+.info-field{display:block;margin:12px 0}.info-field label{display:block;font-weight:600;margin-bottom:5px}.info-field input,.info-field textarea,.info-field select{width:100%;padding:11px;border:1px solid #cbd7dc;border-radius:7px;font:inherit}.info-field textarea{min-height:115px;resize:vertical}
+.info-small{font-size:13px!important;color:var(--muted)!important}
+@media(max-width:600px){.info-hero{padding:34px 18px}.info-card{padding:18px}}

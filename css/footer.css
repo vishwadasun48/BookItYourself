@@ -158,3 +158,8 @@ body {
         padding: 20px;
     }
 }
+/* Contact strip and inactive social icons */
+.footer-contact-strip { margin-top: 30px; padding-top: 18px; border-top: 1px solid #e2e8e8; font-size: 13px; color: #64748b; }
+.footer-contact-strip a { color: #007a78; text-decoration: none; overflow-wrap: anywhere; }
+.footer-contact-strip a:hover { text-decoration: underline; }
+.social-unavailable { width: 34px; height: 34px; background: #dce8e8; color: #5c7777; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; cursor: not-allowed; }

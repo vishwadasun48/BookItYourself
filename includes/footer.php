@@ -36,17 +36,17 @@
             <!-- About Us Column -->
             <div class="footer-col about-col">
                 <h3>About Us</h3>
-                <p>BookItYourself is an exthamd consectator adipiscing aim and provide hotels, and evidences to meet one nationals promotions, and madeling sectors.</p>
+                <p>Discover hotels, villas and unique stays across Sri Lanka. Explore options and plan your next getaway with BookItYourself.</p>
             </div>
 
             <!-- Home Links Column -->
             <div class="footer-col">
                 <h3>Home</h3>
                 <ul>
-                    <li><a href="#">Hotels</a></li>
-                    <li><a href="#">Deals</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="/bookityourself/pages/hotels.php">Hotels</a></li>
+                    <li><a href="/bookityourself/pages/deals.php">Deals</a></li>
+                    <li><a href="/bookityourself/pages/contact.php">Contact Us</a></li>
+                    <li><a href="/bookityourself/pages/blog.php">Blog</a></li>
                 </ul>
             </div>
 
@@ -54,13 +54,12 @@
             <div class="footer-col">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Hotels</a></li>
-                    <li><a href="#">Villas</a></li>
-                    <li><a href="#">Deals</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="/bookityourself/homehtml.php">Home</a></li>
+                    <li><a href="/bookityourself/pages/hotels.php">Hotels &amp; Villas</a></li>
+                    <li><a href="/bookityourself/pages/deals.php">Deals</a></li>
+                    <li><a href="/bookityourself/pages/about.php">About</a></li>
+                    <li><a href="/bookityourself/pages/contact.php">Contact Us</a></li>
+                    <li><a href="/bookityourself/pages/blog.php">Blog</a></li>
                 </ul>
             </div>
 
@@ -68,11 +67,11 @@
             <div class="footer-col">
                 <h3>Support & Policies</h3>
                 <ul>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Cookies Policy</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Support</a></li>
+                    <li><a href="/bookityourself/pages/terms.php">Terms of Service</a></li>
+                    <li><a href="/bookityourself/pages/privacy.php">Privacy Policy</a></li>
+                    <li><a href="/bookityourself/pages/cookies.php">Cookies Policy</a></li>
+                    <li><a href="/bookityourself/pages/help.php">Help Center</a></li>
+                    <li><a href="/bookityourself/pages/support.php">Support</a></li>
                 </ul>
             </div>
 
@@ -80,13 +79,14 @@
             <div class="footer-col social-col">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <span class="social-unavailable" title="Social page coming soon"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="social-unavailable" title="Social page coming soon"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="social-unavailable" title="Social page coming soon"><i class="fa-brands fa-twitter"></i></span>
+                    <span class="social-unavailable" title="Social page coming soon"><i class="fa-brands fa-linkedin-in"></i></span>
                 </div>
             </div>
         </div>
+        <div class="footer-contact-strip">Questions? <a href="mailto:vishwadasun48@gmail.com">vishwadasun48@gmail.com</a> · <a href="https://wa.me/94775681503" target="_blank" rel="noopener noreferrer">WhatsApp Support</a></div>
     </footer>
 
 </body>
