@@ -1,5 +1,5 @@
 <?php
-require_once 'payment_config.php';
+require_once __DIR__ . '/../config/payment_config.php';
 
 $merchant_id = $_POST['merchant_id'] ?? '';
 $order_id = $_POST['order_id'] ?? '';

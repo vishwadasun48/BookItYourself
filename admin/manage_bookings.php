@@ -3,7 +3,7 @@ session_start();
 
 // Admin Security Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -38,8 +38,8 @@ $result = $conn->query($query);
 <head>
   <meta charset="UTF-8">
   <title>Manage Bookings - Admin Dashboard</title>
-  <link rel="stylesheet" href="homecss.css">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     .manage-container { max-width: 1200px; margin: 0 auto; }

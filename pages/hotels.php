@@ -22,7 +22,7 @@ $result = $conn->query($sql);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Hotels & Stays - BookItYourself</title>
-  <link rel="stylesheet" href="hotels.css">
+  <link rel="stylesheet" href="/bookityourself/css/hotels.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -43,7 +43,7 @@ $result = $conn->query($sql);
           <?php while($stay = $result->fetch_assoc()): ?>
             <a href="samplestay.php?id=<?php echo $stay['id']; ?>" class="stay-card">
               <div class="card-img-wrapper">
-                <img src="Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="<?php echo htmlspecialchars($stay['title']); ?>" class="stay-image">
+                <img src="../Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="<?php echo htmlspecialchars($stay['title']); ?>" class="stay-image">
                 <span class="room-badge"><?php echo htmlspecialchars($stay['room_type']); ?></span>
               </div>
               <div class="card-content">
@@ -71,13 +71,13 @@ $result = $conn->query($sql);
 
   <script>
     // Header සහ Footer Load කරගැනීමට
-    fetch('header.php')
+    fetch('/bookityourself/includes/header.php')
       .then(response => response.text())
       .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
       });
 
-    fetch('footer.php')
+    fetch('/bookityourself/includes/footer.php')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-placeholder').innerHTML = data;

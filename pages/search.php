@@ -34,7 +34,7 @@ $result = $stmt->get_result();
 <head>
   <meta charset="UTF-8">
   <title>Search Stays - BookItYourself</title>
-  <link rel="stylesheet" href="homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body { background: #0f172a; color: #fff; font-family: 'Inter', sans-serif; }
@@ -49,7 +49,7 @@ $result = $stmt->get_result();
 </head>
 <body>
 
-  <?php include 'header.php'; ?>
+  <?php include __DIR__ . '/../includes/header.php'; ?>
 
   <form class="search-box" action="search.php" method="GET">
     <input type="text" name="location" placeholder="Search location (e.g. Galle)" value="<?php echo htmlspecialchars($location); ?>">
@@ -61,7 +61,7 @@ $result = $stmt->get_result();
     <?php if ($result->num_rows > 0): ?>
       <?php while ($stay = $result->fetch_assoc()): ?>
         <div class="stay-card">
-          <img src="Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="Stay">
+          <img src="../Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="Stay">
           <div class="stay-details">
             <h3><?php echo htmlspecialchars($stay['title']); ?></h3>
             <p><i class="fa-solid fa-location-dot"></i> <?php echo htmlspecialchars($stay['location']); ?></p>
@@ -75,7 +75,7 @@ $result = $stmt->get_result();
     <?php endif; ?>
   </div>
 
-  <?php include 'footer.php'; ?>
+  <?php include __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
 </html>

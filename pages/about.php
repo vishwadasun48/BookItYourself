@@ -10,14 +10,14 @@ if (session_status() === PHP_SESSION_NONE) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - BookItYourself</title>
-  <link rel="stylesheet" href="homecss.css">
-  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/about.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <!-- Header Include -->
-  <?php include 'header.php'; ?>
+  <?php include __DIR__ . '/../includes/header.php'; ?>
 
   <main class="about-container">
     
@@ -81,7 +81,7 @@ if (session_status() === PHP_SESSION_NONE) {
   </main>
 
   <!-- Footer Include -->
-  <?php include 'footer.php'; ?>
+  <?php include __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
 </html>

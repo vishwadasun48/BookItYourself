@@ -28,7 +28,7 @@ $result = $stmt->get_result();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search Results - BookItYourself</title>
-  <link rel="stylesheet" href="searchresult.css">
+  <link rel="stylesheet" href="/bookityourself/css/searchresult.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -47,7 +47,7 @@ $result = $stmt->get_result();
           <?php while($stay = $result->fetch_assoc()): ?>
             <a href="samplestay.php?id=<?php echo $stay['id']; ?>" class="stay-card">
               <div class="card-img-wrapper">
-                <img src="Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="<?php echo htmlspecialchars($stay['title']); ?>" class="stay-image">
+                <img src="../Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="<?php echo htmlspecialchars($stay['title']); ?>" class="stay-image">
                 <span class="room-badge"><?php echo htmlspecialchars($stay['room_type']); ?></span>
               </div>
               <div class="card-content">
@@ -68,7 +68,7 @@ $result = $stmt->get_result();
             <i class="fa-solid fa-triangle-exclamation"></i>
             <h3>No stays found in this location!</h3>
             <p>Try searching for another destination like Bentota, Galle, or Kandy.</p>
-            <a href="homehtml.php" class="btn-back">Back to Home</a>
+            <a href="../homehtml.php" class="btn-back">Back to Home</a>
           </div>
         <?php endif; ?>
       </div>
@@ -78,13 +78,13 @@ $result = $stmt->get_result();
   <div id="footer-placeholder"></div>
 
   <script>
-    fetch('header.php')
+    fetch('/bookityourself/includes/header.php')
       .then(response => response.text())
       .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
       });
 
-    fetch('footer.php')
+    fetch('/bookityourself/includes/footer.php')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-placeholder').innerHTML = data;

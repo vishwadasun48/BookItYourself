@@ -3,7 +3,7 @@ session_start();
 
 // Admin Security Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -29,8 +29,8 @@ $total_revenue = $revenue_result['total_revenue'] ?? 0;
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard - BookItYourself</title>
-  <link rel="stylesheet" href="homecss.css">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     .dashboard-container {
@@ -198,7 +198,7 @@ $total_revenue = $revenue_result['total_revenue'] ?? 0;
         <a href="add_stay.php" class="action-btn">
           <i class="fa-solid fa-circle-plus"></i> Add New Property
         </a>
-        <a href="homehtml.php" target="_blank" class="action-btn">
+        <a href="/bookityourself/homehtml.php" target="_blank" class="action-btn">
           <i class="fa-solid fa-globe"></i> Browse Live Site
         </a>
       </div>

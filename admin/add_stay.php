@@ -3,7 +3,7 @@ session_start();
 
 // Admin Security Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $selected_facilities = isset($_POST['facilities']) ? $_POST['facilities'] : [];
 
-    $upload_dir = "Images/Stays/";
+    $upload_dir = __DIR__ . "/../Images/Stays/";
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0777, true);
     }
@@ -94,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <title>Add New Stay - Admin Dashboard</title>
-  <link rel="stylesheet" href="homecss.css">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body { background-color: #0f172a; color: #fff; font-family: 'Inter', sans-serif; }

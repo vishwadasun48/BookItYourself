@@ -19,7 +19,7 @@ $grand_total = $subtotal + $service_fee + $tax;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Secure Checkout - BookItYourself</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="checkout.css">
+<link rel="stylesheet" href="/bookityourself/css/checkout.css">
 </head>
 <body>
 <div id="header-placeholder"></div>
@@ -30,7 +30,7 @@ $grand_total = $subtotal + $service_fee + $tax;
     <p>Complete your details and pay securely by Visa or Mastercard.</p>
   </div>
 
-  <form action="process_payment.php" method="post" class="checkout-grid">
+  <form action="../payment/process_payment.php" method="post" class="checkout-grid">
     <section class="checkout-card">
       <div class="section-title"><span>1</span><div><h2>Guest Details</h2><p>Enter the contact details for this booking.</p></div></div>
       <div class="form-grid">
@@ -57,7 +57,7 @@ $grand_total = $subtotal + $service_fee + $tax;
       <h2>Booking Summary</h2>
       <?php foreach ($_SESSION['cart'] as $item): ?>
       <div class="booking-item">
-        <?php if (!empty($item['image'])): ?><img src="<?= htmlspecialchars($item['image']) ?>" alt=""><?php endif; ?>
+        <?php if (!empty($item['image'])): ?><img src="<?= htmlspecialchars('/bookityourself/Images/Stays/' . basename($item['image'])) ?>" alt=""><?php endif; ?>
         <div><h3><?= htmlspecialchars($item['name']) ?></h3><p><?= htmlspecialchars($item['check_in']) ?> - <?= htmlspecialchars($item['check_out']) ?></p><p><?= (int)$item['guests'] ?> guest(s) · <?= htmlspecialchars($item['room_type']) ?></p></div>
       </div>
       <?php endforeach; ?>
@@ -72,8 +72,8 @@ $grand_total = $subtotal + $service_fee + $tax;
 </main>
 <div id="footer-placeholder"></div>
 <script>
-fetch('header.php').then(r=>r.text()).then(d=>document.getElementById('header-placeholder').innerHTML=d).catch(()=>{});
-fetch('footer.php').then(r=>r.text()).then(d=>document.getElementById('footer-placeholder').innerHTML=d).catch(()=>{});
+fetch('/bookityourself/includes/header.php').then(r=>r.text()).then(d=>document.getElementById('header-placeholder').innerHTML=d).catch(()=>{});
+fetch('/bookityourself/includes/footer.php').then(r=>r.text()).then(d=>document.getElementById('footer-placeholder').innerHTML=d).catch(()=>{});
 </script>
 </body>
 </html>

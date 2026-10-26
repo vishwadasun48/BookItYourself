@@ -3,7 +3,7 @@ session_start();
 
 // Admin Security Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selected_facilities = isset($_POST['facilities']) ? $_POST['facilities'] : [];
     $delete_images       = isset($_POST['delete_images']) ? $_POST['delete_images'] : [];
 
-    $upload_dir = "Images/Stays/";
+    $upload_dir = __DIR__ . "/../Images/Stays/";
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0777, true);
     }
@@ -150,8 +150,8 @@ while($row = $cf_result->fetch_assoc()) {
 <head>
   <meta charset="UTF-8">
   <title>Edit Stay - Admin Dashboard</title>
-  <link rel="stylesheet" href="homecss.css">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     .sample-img-preview { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
@@ -217,7 +217,7 @@ while($row = $cf_result->fetch_assoc()) {
       <div class="input-group">
         <label>Current Hero Image</label>
         <div style="margin-bottom: 10px;">
-          <img src="Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="Current Hero Image" style="width: 100px; height: 70px; object-fit: cover; border-radius: 6px;">
+          <img src="../Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="Current Hero Image" style="width: 100px; height: 70px; object-fit: cover; border-radius: 6px;">
         </div>
         <label>Change Hero Image (Optional)</label>
         <input type="file" name="hero_image" accept="image/*">
@@ -230,7 +230,7 @@ while($row = $cf_result->fetch_assoc()) {
           <?php if ($sample_images_result && $sample_images_result->num_rows > 0): ?>
             <?php while($s_img = $sample_images_result->fetch_assoc()): ?>
               <div class="img-card">
-                <img src="Images/Stays/<?php echo htmlspecialchars($s_img['image_path']); ?>" alt="Sample Image">
+                <img src="../Images/Stays/<?php echo htmlspecialchars($s_img['image_path']); ?>" alt="Sample Image">
                 <label>
                   <input type="checkbox" name="delete_images[]" value="<?php echo $s_img['id']; ?>"> Delete
                 </label>

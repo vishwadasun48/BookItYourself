@@ -37,7 +37,7 @@ if (isset($_POST['register'])) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['username'] = $username;
             $_SESSION['role'] = 'user';
-            header("Location: account.php");
+            header("Location: user/account.php");
             exit();
         } else {
             $message = "ලියාපදිංචිය අසාර්ථකයි: " . $conn->error;
@@ -65,10 +65,10 @@ if (isset($_POST['login'])) {
 
             // Admin කෙනෙක් නම් admin_dashboard.php වෙතත්, User කෙනෙක් නම් account.php වෙතත් යැවීම
             if ($row['role'] === 'admin') {
-                header("Location: admin_dashboard.php");
+                header("Location: admin/admin_dashboard.php");
                 exit();
             } else {
-                header("Location: account.php");
+                header("Location: user/account.php");
                 exit();
             }
         } else {
@@ -87,8 +87,8 @@ if (isset($_POST['login'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In / Register - BookItYourself</title>
-  <link rel="stylesheet" href="homecss.css">
-  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/auth.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
@@ -110,7 +110,7 @@ if (isset($_POST['login'])) {
 <body>
 
   <!-- Header Include -->
-  <?php include 'header.php'; ?>
+  <?php include __DIR__ . '/includes/header.php'; ?>
 
   <div class="auth-page-wrapper">
     <div class="auth-container">

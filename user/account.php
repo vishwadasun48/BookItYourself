@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -30,7 +30,7 @@ $cart_count = $cart_stmt->get_result()->fetch_assoc()['cart_count'];
 // Logout action
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 ?>
@@ -41,7 +41,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Account - BookItYourself</title>
-  <link rel="stylesheet" href="account.css">
+  <link rel="stylesheet" href="/bookityourself/css/account.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -79,11 +79,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
   <div id="footer-placeholder"></div>
 
   <script>
-    fetch('header.php')
+    fetch('/bookityourself/includes/header.php')
       .then(response => response.text())
       .then(data => { document.getElementById('header-placeholder').innerHTML = data; });
 
-    fetch('footer.php')
+    fetch('/bookityourself/includes/footer.php')
       .then(response => response.text())
       .then(data => { document.getElementById('footer-placeholder').innerHTML = data; });
   </script>

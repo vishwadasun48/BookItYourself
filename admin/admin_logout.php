@@ -23,6 +23,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Login පිටුවට Redirect කිරීම
-header("Location: login.php");
+header("Location: ../login.php");
 exit();
 ?>

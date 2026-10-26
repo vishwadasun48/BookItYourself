@@ -3,7 +3,7 @@ session_start();
 
 // Admin Security Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -32,8 +32,8 @@ $result = $conn->query("SELECT * FROM stays ORDER BY id DESC");
 <head>
   <meta charset="UTF-8">
   <title>Manage Stays - Admin Dashboard</title>
-  <link rel="stylesheet" href="homecss.css">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     .manage-container { max-width: 1100px; margin: 0 auto; }
@@ -86,7 +86,7 @@ $result = $conn->query("SELECT * FROM stays ORDER BY id DESC");
             <?php while($row = $result->fetch_assoc()): ?>
               <tr>
                 <td>
-                  <img src="Images/Stays/<?php echo htmlspecialchars($row['hero_image']); ?>" alt="Stay Image" class="stay-thumb">
+                  <img src="../Images/Stays/<?php echo htmlspecialchars($row['hero_image']); ?>" alt="Stay Image" class="stay-thumb">
                 </td>
                 <td><strong><?php echo htmlspecialchars($row['title']); ?></strong></td>
                 <td><?php echo htmlspecialchars($row['location']); ?></td>

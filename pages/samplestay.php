@@ -55,7 +55,7 @@ $reviews = $rev_stmt->get_result();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo htmlspecialchars($stay['title']); ?> - BookItYourself</title>
-  <link rel="stylesheet" href="stay.css">
+  <link rel="stylesheet" href="/bookityourself/css/stay.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -65,7 +65,7 @@ $reviews = $rev_stmt->get_result();
   <main class="container">
     <!-- Dynamic Hero Banner Photo -->
     <div class="stay-banner">
-      <img src="Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="<?php echo htmlspecialchars($stay['title']); ?>" class="banner-img">
+      <img src="../Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="<?php echo htmlspecialchars($stay['title']); ?>" class="banner-img">
     </div>
 
     <div class="stay-content-grid">
@@ -129,7 +129,7 @@ $reviews = $rev_stmt->get_result();
         
         <!-- Booking Card -->
         <div class="booking-card">
-          <form class="booking-form" action="add_to_cart.php" method="POST">
+          <form class="booking-form" action="../user/add_to_cart.php" method="POST">
             <!-- Hidden Dynamic Fields -->
             <input type="hidden" name="stay_id" value="<?php echo $stay['id']; ?>">
             <input type="hidden" name="property_name" value="<?php echo htmlspecialchars($stay['title']); ?>">
@@ -160,7 +160,7 @@ $reviews = $rev_stmt->get_result();
         <div class="gallery-grid">
           <?php if ($images->num_rows > 0): ?>
             <?php while($img = $images->fetch_assoc()): ?>
-              <img src="Images/Stays/<?php echo htmlspecialchars($img['image_path']); ?>" alt="Gallery Image">
+              <img src="../Images/Stays/<?php echo htmlspecialchars($img['image_path']); ?>" alt="Gallery Image">
             <?php endwhile; ?>
           <?php endif; ?>
         </div>

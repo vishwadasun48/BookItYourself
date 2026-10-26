@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once 'payment_config.php';
+require_once __DIR__ . '/../config/payment_config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_SESSION['cart'])) {
-    header('Location: cart.php'); exit;
+    header('Location: ../user/cart.php'); exit;
 }
 
 $first = trim($_POST['first_name'] ?? '');
@@ -41,9 +41,9 @@ $_SESSION['last_order_id'] = $order_id;
 $hash = strtoupper(md5(PAYHERE_MERCHANT_ID . $order_id . $amount . $currency . strtoupper(md5(PAYHERE_MERCHANT_SECRET))));
 $items = count($_SESSION['cart']) === 1 ? $_SESSION['cart'][0]['name'] : 'BookItYourself Hotel Booking';
 
-$return_url = SITE_URL . '/payment_success.php?order_id=' . urlencode($order_id);
-$cancel_url = SITE_URL . '/payment_cancel.php?order_id=' . urlencode($order_id);
-$notify_url = SITE_URL . '/payment_notify.php';
+$return_url = SITE_URL . '/payment/payment_success.php?order_id=' . urlencode($order_id);
+$cancel_url = SITE_URL . '/payment/payment_cancel.php?order_id=' . urlencode($order_id);
+$notify_url = SITE_URL . '/payment/payment_notify.php';
 ?>
 <!DOCTYPE html><html><head><meta charset="UTF-8"><title>Redirecting to payment...</title></head><body>
 <form id="payhereForm" method="post" action="<?= htmlspecialchars(PAYHERE_CHECKOUT_URL) ?>">

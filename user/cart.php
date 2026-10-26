@@ -34,7 +34,7 @@ $grand_total = $subtotal + $service_fee + $tax;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Booking Cart - BookItYourself</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="/bookityourself/css/cart.css">
 </head>
 <body>
 
@@ -57,7 +57,7 @@ $grand_total = $subtotal + $service_fee + $tax;
           <?php foreach ($_SESSION['cart'] as $index => $item): ?>
             <div class="cart-card">
               <div class="card-image">
-                <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>">
+                <img src="<?php echo htmlspecialchars('/bookityourself/Images/Stays/' . basename($item['image'])); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>">
               </div>
 
               <div class="card-details">
@@ -146,13 +146,13 @@ $grand_total = $subtotal + $service_fee + $tax;
   <div id="footer-placeholder"></div>
 
   <script>
-  fetch('header.php')
+  fetch('/bookityourself/includes/header.php')
     .then(response => response.text())
     .then(data => {
       document.getElementById('header-placeholder').innerHTML = data;
     });
 
-  fetch('footer.php')
+  fetch('/bookityourself/includes/footer.php')
     .then(response => response.text())
     .then(data => {
       document.getElementById('footer-placeholder').innerHTML = data;

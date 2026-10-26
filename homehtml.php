@@ -26,7 +26,7 @@ $loc_result = $conn->query($loc_sql);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BookItYourself - Customer Home Page</title>
-  <link rel="stylesheet" href="homecss.css">
+  <link rel="stylesheet" href="/bookityourself/css/homecss.css">
 </head>
 <body>
 
@@ -38,7 +38,7 @@ $loc_result = $conn->query($loc_sql);
       <p>Hotels and villas for every trip, budget and occasion.</p>
 
       <!-- Search Form (GET method එක හරහා searchresult.php වෙත යැවීම) -->
-      <form class="search-card" action="searchresult.php" method="GET">
+      <form class="search-card" action="pages/searchresult.php" method="GET">
         <div class="search-field">
           <label for="destination">Destination</label>
           <input type="text" id="destination" name="destination" list="districts-list" placeholder="Where are you going?" required>
@@ -73,7 +73,7 @@ $loc_result = $conn->query($loc_sql);
 
         <?php if ($result && $result->num_rows > 0): ?>
           <?php while($stay = $result->fetch_assoc()): ?>
-            <a href="samplestay.php?id=<?php echo $stay['id']; ?>" class="stay-card">
+            <a href="pages/samplestay.php?id=<?php echo $stay['id']; ?>" class="stay-card">
               <img src="Images/Stays/<?php echo htmlspecialchars($stay['hero_image']); ?>" alt="<?php echo htmlspecialchars($stay['title']); ?>" class="stay-image">
               <h3><?php echo htmlspecialchars($stay['title']); ?></h3>
               <div class="stay-meta">
@@ -113,13 +113,13 @@ $loc_result = $conn->query($loc_sql);
   <div id="footer-placeholder"></div>
 
 <script>
-  fetch('header.php')
+  fetch('/bookityourself/includes/header.php')
     .then(response => response.text())
     .then(data => {
       document.getElementById('header-placeholder').innerHTML = data;
     });
 
-  fetch('footer.php')
+  fetch('/bookityourself/includes/footer.php')
     .then(response => response.text())
     .then(data => {
       document.getElementById('footer-placeholder').innerHTML = data;
